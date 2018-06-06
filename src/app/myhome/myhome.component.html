@@ -1,0 +1,27 @@
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['myprofile']"><img src="/assets/images/logo.png" height="100%"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a [routerLink]="['payments']"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li *ngIf="adminFlag"><a [routerLink]="['admin']"> <span class="glyphicon glyphicon-credit-card"></span> Make Payments</a></li>
+      <li *ngIf="adminFlag"><a [routerLink]="['registration']"><span class="glyphicon glyphicon-user"></span> New Member Registration</a></li>
+      <li><a [routerLink]="['carousal']"><span class="glyphicon glyphicon-camera"></span> Photo Galary</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a [routerLink]="['myprofile']" *ngIf="userDetail"><span class="glyphicon glyphicon-user"></span>  Hi,{{userDetail.name}}</a></li>
+      <li><a href="#" (click)=logout()><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="footer">
+    @myEntertainment
+  </div>
+
+<router-outlet>
+  
+ 
+</router-outlet>

@@ -1,0 +1,55 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Personal Detail</h4>
+  </div>
+
+  <div class="panel-body">
+    <div *ngIf="profileUpdatedFlag" class="alert alert-success" role="alert">
+      <strong>Successfull!!!</strong> Profile Update Successfully
+    </div>
+    <form (ngSubmit)="onProfileUpdate(userDetail)">
+      <table class="table table-bordered">
+
+        <tbody *ngIf="userDetail">
+          <tr>
+            <td>Name</td>
+            <td>{{userDetail.name}}</td>
+          </tr>
+          <tr>
+            <td>E-mail Id</td>
+            <td>{{userDetail.emailId}}</td>
+          </tr>
+          <tr>
+            <td>Desk Phone</td>
+            <td>
+              <input [(ngModel)]="userDetail.deskPhoneNumber" class="form-control" name="deskPhoneNumber" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Mobile No</td>
+            <td>
+              <input [(ngModel)]="userDetail.mobileNumber" class="form-control" name="mobileNumber" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Password</td>
+            <td>
+              <input [(ngModel)]="userDetail.password" class="form-control" name="Password" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Date of Birth</td>
+            <td>
+              <input [(ngModel)]="userDetail.dateOfBirth" bsDatepicker type="text" class="form-control" name="dateOfBirth" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-info btn-lg">Update Profile</button>
+    </form>
+  </div>
+
+</div>

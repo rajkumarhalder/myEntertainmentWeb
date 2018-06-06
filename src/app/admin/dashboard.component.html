@@ -1,0 +1,67 @@
+<div class="container">
+  <div *ngIf="paymentSuccessFlag" class="alert alert-success" role="alert">
+    <strong>Successfull!!!</strong> Payment Done Successfully
+  </div>
+    <form [formGroup]="paymentForm" (ngSubmit)="makePayment()">
+      <div class="form-group">
+
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Pay for Month</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                  <td><select #selectElem  class="form-control" *ngIf="members" formControlName="memberId">
+                      <option *ngFor="let member of members" [value]="member.memberId">
+                          {{member.name}}
+                      </option>
+                  </select>
+                </td>
+                  <td>
+
+                      <select #selectElem  class="form-control" *ngIf="masterdata" formControlName="monthId">
+                          <option *ngFor="let data of masterdata" [value]="data.monthId">
+                              {{data.month}}
+                          </option>
+                      </select>
+
+                  </td>
+                  <td><input type="text" class="form-control" formControlName="amount" /></td>
+                  <td><button type="submit" class="form-control">Update</button></td>
+                </tr>
+                
+              </tbody>
+            </table>
+        
+    
+      </div>
+    </form>
+  
+
+
+  <table class="table table-bordered" *ngIf="members">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Desk Phone Name</th>
+          <th>Email ID</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members">
+          <td>{{member.name}}</td>
+          <td>{{member.deskPhoneNumber}}</td>
+          <td>{{member.emailId}}</td>
+          <td>{{member.mobileNumber}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+</div>

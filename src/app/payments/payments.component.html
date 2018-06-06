@@ -1,0 +1,20 @@
+<div class="bs-example">
+  <table class="table" >
+      <thead>
+          <tr>
+              <th>Month</th>
+              <th>Payment Date</th>
+              <th>Amount</th>
+              <th>Payment Status</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr class="active" *ngFor="let payment of payments">
+              <td>{{payment.month}}</td>
+              <td>{{payment.paymentDate}}</td>
+              <td>{{payment.amount}}</td>
+              <td>{{payment.paymentStatus}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
