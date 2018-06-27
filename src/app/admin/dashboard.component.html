@@ -51,6 +51,7 @@
           <th>Desk Phone Name</th>
           <th>Email ID</th>
           <th>Phone Number</th>
+          <th>Payment Dues</th>
         </tr>
       </thead>
       <tbody>
@@ -59,6 +60,10 @@
           <td>{{member.deskPhoneNumber}}</td>
           <td>{{member.emailId}}</td>
           <td>{{member.mobileNumber}}</td>
+          <td>
+            <div *ngFor="let payment of member.payments">
+              <h5 *ngIf="payment.paymentStatus=='Due'">{{payment.month}}</h5></div>
+          </td>
         </tr>
         
       </tbody>

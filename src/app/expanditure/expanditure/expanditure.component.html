@@ -1,0 +1,74 @@
+<div class="container">
+  <div *ngIf="expanditureFlag" class="alert alert-success" role="alert">
+    <strong>Successfull!!!</strong> Expanditure Updated Successfully
+  </div>
+    <form [formGroup]="expanditureForm" (ngSubmit)="makeexpanditureUpdate()">
+      <div class="form-group">
+
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Amount</th>
+                  <th>Purpose</th>
+                  <th>Short Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >  
+                  <td>
+                      <select #selectElem  class="form-control" *ngIf="masterdata" formControlName="monthId">
+                          <option *ngFor="let data of masterdata" [value]="data.monthId">
+                              {{data.month}}
+                          </option>
+                      </select>
+                      
+                  </td>
+                  <td><input type="text" class="form-control" formControlName="amount" /></td>
+                  <td><select #selectElem  class="form-control" *ngIf="purposeList" formControlName="purpose">
+                    <option *ngFor="let purpose of purposeList" [value]="purpose">
+                        {{purpose}}
+                    </option>
+                </select>
+              </td>
+              <td><input type="text" class="form-control" formControlName="shortDesc" /></td>
+                  <td><button type="submit" class="form-control">Update</button></td>
+                </tr>
+                
+              </tbody>
+            </table>
+        
+    
+      </div>
+    </form>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Amount</th>
+          <th>Purpose</th>
+          <th>Short Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expanditur of listOfExpanditur"> 
+          <td><select disabled="true"  class="form-control" *ngIf="masterdata" [(ngModel)]="expanditur.monthId ">
+              <option *ngFor="let data of masterdata" [value]="data.monthId" >
+                  {{data.month}}
+              </option>
+          </select></td> 
+                    
+                    <td>{{expanditur.amount}}</td>
+                    <td>{{expanditur.purpose}}</td>
+                    <td>{{expanditur.shortDesc}}</td>
+                   
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>
+
+
+    

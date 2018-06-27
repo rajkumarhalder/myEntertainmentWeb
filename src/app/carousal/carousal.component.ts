@@ -15,6 +15,8 @@ export class CarousalComponent  {
   constructor() {
 
 this.items=[
+  {name : '/assets/images/image-6.png'},
+  {name : '/assets/images/image-8.png'},
 {name : '/assets/images/image-1.jpg'},
 {name : '/assets/images/image-2.png'},
 {name : '/assets/images/image-3.png'},

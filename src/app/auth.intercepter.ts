@@ -10,7 +10,8 @@ export class AuthIntercepter implements HttpInterceptor{
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
   console.log("intercept");
-  const url = 'http://172.16.7.29:8080';
+  //const url = 'http://172.16.16.51:8080';
+  const url = 'http://localhost:8080';
 
   if(localStorage.getItem('accessToken') !=null){
     req = req.clone({

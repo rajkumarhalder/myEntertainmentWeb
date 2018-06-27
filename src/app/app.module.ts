@@ -27,6 +27,8 @@ import { NewRegistration } from './aboutus/newregistration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { ExpanditureComponent } from './expanditure/expanditure/expanditure.component';
+import { StatisticComponent } from './statistics/statistic/statistic.component';
 
 
 
@@ -43,7 +45,11 @@ const appRoutes :Routes =[
   {path : 'myprofile' ,component : MyprofileComponent},
   {path : 'payments' ,component : PaymentsComponent},
   {path : 'admin' ,component : DashboardComponent},
-  {path : 'carousal', component : CarousalComponent}
+  {path : 'carousal', component : CarousalComponent},
+  {path : 'expanditure', component : ExpanditureComponent},
+  {path : 'statistic', component : StatisticComponent}
+
+  
 ]}
 
 ];
@@ -60,7 +66,9 @@ const appRoutes :Routes =[
     MyprofileComponent,
     PaymentsComponent,
     AboutUs,
-    NewRegistration
+    NewRegistration,
+    ExpanditureComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,HttpModule,HttpClientModule,

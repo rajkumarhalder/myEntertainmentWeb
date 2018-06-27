@@ -19,6 +19,10 @@ export class MyHomeservice{
         return  this._http.get("/getDuesPayment");
     }
 
+    getNotifications() {
+        return  this._http.get("/getNotification");
+    }
+
 
 
 

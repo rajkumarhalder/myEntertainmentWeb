@@ -17,6 +17,8 @@ export class MyHomeComponent implements OnInit {
 
    paymentsDue :any;
 
+   notification :any;
+
 
   constructor(private _myHomeService : MyHomeservice,private _route : Router,private toastr: ToastrService) { }
 
@@ -39,7 +41,7 @@ export class MyHomeComponent implements OnInit {
    this._myHomeService.getDuePayments().subscribe(data=>{
     this.paymentsDue=data;
 
-    if(this.paymentsDue!="undefined" && this.paymentsDue.length>1){
+    if(this.paymentsDue!="undefined" && this.paymentsDue.length>0){
       this.toastr.info("Your Payment is Due..Please make payment","Payment Due");
     }
   else{
@@ -51,6 +53,14 @@ export class MyHomeComponent implements OnInit {
 
   });
   
+  this._myHomeService.getNotifications().subscribe(data=>{
+this.notification=data;
+
+console.log(this.notification)
+  }),
+  error=>{
+
+  }
    
   }
 
