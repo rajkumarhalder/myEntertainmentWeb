@@ -1,7 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms'
 import { RegistrationService } from './registration.service';
+
+import * as $ from 'jquery';
+
+/* declare var jquery:any;
+declare var $ :any; */
+
+
 
 @Component({
   selector: 'app-registration',
@@ -9,9 +16,14 @@ import { RegistrationService } from './registration.service';
   styleUrls: ['./registration.component.css'],
   providers :[RegistrationService]
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit{
 
-  public isRegistrationSuccess = false;
+  public paymentSuccessFlag : boolean =false;
+  ngOnInit() {
+    
+  }
+
+  
 
   constructor(private _registrationService: RegistrationService) {
     console.log("RegistrationComponent called....")
@@ -32,10 +44,10 @@ export class RegistrationComponent {
 
   onRegistration() {
     console.log(this.registrationForm.value);
-    this._registrationService.validateAndSave(this.registrationForm.value).subscribe(
-      (data : any)=>{
+    return this._registrationService.validateAndSave(this.registrationForm.value).subscribe(
+      data=>{
         console.log("Registration success..")
-        this.isRegistrationSuccess=true;
+        this.paymentSuccessFlag=true;
       },
       error=>{
         
@@ -43,4 +55,11 @@ export class RegistrationComponent {
     );
   }
 
+
+
+
+
 }
+
+
+

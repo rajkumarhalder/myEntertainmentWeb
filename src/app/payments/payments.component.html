@@ -1,20 +1,51 @@
-<div class="bs-example">
-  <table class="table" >
-      <thead>
-          <tr>
-              <th>Month</th>
-              <th>Payment Date</th>
-              <th>Amount</th>
-              <th>Payment Status</th>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="bs-example">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Payment Date</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
+                <tfoot>
+          <tr class="danger">
+              <td>Total Contribution</td>
+              <td></td>
+              <td colspan="2">{{totalAmount}}</td>
           </tr>
-      </thead>
-      <tbody>
-        <tr class="active" *ngFor="let payment of payments">
-              <td>{{payment.month}}</td>
-              <td>{{payment.paymentDate}}</td>
-              <td>{{payment.amount}}</td>
-              <td>{{payment.paymentStatus}}</td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+          
+                </tfoot>
+                <tbody>
+                  <tr class="active" *ngFor="let payment of payments">
+                        <td>{{payment.month}}</td>
+                        <td>{{payment.paymentDate}}</td>
+                        <td>{{payment.amount}}</td>
+                        <td>{{payment.paymentStatus}}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="bs-example">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>Entertainment Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr class="active">
+                        <td><h4>{{currentFundBalance}}</h4>    Indian Rupee</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>

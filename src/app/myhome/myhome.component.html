@@ -8,6 +8,8 @@
       <li class="active"><a [routerLink]="['payments']"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li *ngIf="adminFlag"><a [routerLink]="['admin']"> <span class="glyphicon glyphicon-credit-card"></span> Make Payments</a></li>
       <li *ngIf="adminFlag"><a [routerLink]="['registration']"><span class="glyphicon glyphicon-user"></span> New Member Registration</a></li>
+      <li *ngIf="adminFlag"><a [routerLink]="['expanditure']"><span class="glyphicon glyphicon-user"></span> Expanditure</a></li>
+      <li *ngIf="! adminFlag"><a [routerLink]="['statistic']"><span class="glyphicon glyphicon-user"></span> Expanditure</a></li>
       <li><a [routerLink]="['carousal']"><span class="glyphicon glyphicon-camera"></span> Photo Galary</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -16,6 +18,9 @@
     </ul>
   </div>
 </nav>
+
+
+<marquee *ngFor="let msg of notification">{{msg.notificationMsg}}</marquee>
 
 <div class="footer">
     @myEntertainment

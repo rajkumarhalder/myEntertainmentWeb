@@ -27,25 +27,41 @@ import { NewRegistration } from './aboutus/newregistration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { ExpanditureComponent } from './expanditure/expanditure/expanditure.component';
+import { StatisticComponent } from './statistics/statistic/statistic.component';
+
+
+
+import { LoaderComponent } from './loader/loader.component'; // to iomplement global loader
+import { AppConstant } from './AppConstant';//to define constant variable name
 
 
 
 const appRoutes :Routes =[
-{path : "",redirectTo : 'home/login',pathMatch : 'full'},
-{path : 'home', component : HomepageComponent,children : [
-{path : 'login', component : LoginComponent},
-{path : 'aboutus', component : AboutUs},
-{path : 'newregistration', component : NewRegistration}
-  
-]},
-{path : 'myhome', component : MyHomeComponent,canActivate : [AuthGuard],children : [
-  {path : 'registration', component : RegistrationComponent},
-  {path : 'myprofile' ,component : MyprofileComponent},
-  {path : 'payments' ,component : PaymentsComponent},
-  {path : 'admin' ,component : DashboardComponent},
-  {path : 'carousal', component : CarousalComponent}
-]}
-
+  {path : "",redirectTo : 'home/login',pathMatch : 'full'},
+  {
+    path : 'home', 
+    component : HomepageComponent,
+    children : [
+      {path : 'login', component : LoginComponent},
+      {path : 'aboutus', component : AboutUs},
+      {path : 'member-registration', component : RegistrationComponent}
+    ]
+  },
+  {
+    path : 'myhome', 
+    component : MyHomeComponent,
+    canActivate : [AuthGuard],
+    children : [
+      {path : 'registration', component : RegistrationComponent},
+      {path : 'myprofile' ,component : MyprofileComponent},
+      {path : 'payments' ,component : PaymentsComponent},
+      {path : 'admin' ,component : DashboardComponent},
+      {path : 'carousal', component : CarousalComponent},
+      {path : 'expanditure', component : ExpanditureComponent},
+      {path : 'statistic', component : StatisticComponent}
+    ]
+  }
 ];
 
 @NgModule({
@@ -60,17 +76,24 @@ const appRoutes :Routes =[
     MyprofileComponent,
     PaymentsComponent,
     AboutUs,
-    NewRegistration
+    NewRegistration,
+    ExpanditureComponent,
+    StatisticComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,HttpModule,HttpClientModule,
     RouterModule.forRoot(appRoutes),FormsModule,BsDatepickerModule.forRoot(),ToastrModule.forRoot(),
     BrowserAnimationsModule,Ng2CarouselamosModule
   ],
-  providers: [{  provide: HTTP_INTERCEPTORS,
-                 useClass: AuthIntercepter,
-                 multi: true },AuthGuard
-              ],
+  providers: [
+    {   provide: HTTP_INTERCEPTORS,
+        useClass: AuthIntercepter,
+        multi: true 
+    },
+    AuthGuard,
+    AppConstant
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { AppConstant } from './AppConstant';
 
 @Injectable()
 export class AuthIntercepter implements HttpInterceptor{
@@ -10,13 +11,15 @@ export class AuthIntercepter implements HttpInterceptor{
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
   console.log("intercept");
-  const url = 'http://172.16.7.29:8080';
+  //const url = 'http://172.16.16.51:8080';
+  //const url = 'http://localhost:8080';
+  const url = 'http://localhost:8082/myEntertainmentService';
 
-  if(localStorage.getItem('accessToken') !=null){
+  if(localStorage.getItem(AppConstant.JWT_TOKEN) !=null){
     req = req.clone({
       url: url + req.url,
       setHeaders: {
-        Authorization: localStorage.getItem('accessToken')
+        Authorization: localStorage.getItem(AppConstant.JWT_TOKEN)
       }
       
     });

@@ -12,11 +12,15 @@ export class MyHomeservice{
     constructor(private _http :HttpClient){}
 
     getMyProfile() {
-        return  this._http.get("/getmember");
+        return  this._http.get("/home/fetchMyprofile");
     }
 
     getDuePayments() {
-        return  this._http.get("/getDuesPayment");
+        return  this._http.get("/home/getDuesPayment");
+    }
+
+    getNotifications() {
+        return  this._http.get("/home/getNotification");
     }
 
 

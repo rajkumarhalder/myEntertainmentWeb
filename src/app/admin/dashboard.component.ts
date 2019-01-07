@@ -50,6 +50,7 @@ export class DashboardComponent implements OnInit {
        data=>{
         this.paymentSuccessFlag=true;
 console.log('success');
+this._dashboardService.getAllMembers().subscribe(members => this.members = members);
        },
        error=>{
 

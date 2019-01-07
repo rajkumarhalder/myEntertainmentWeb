@@ -1,0 +1,53 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#spinnerholder
+{
+	margin: 0 auto;
+ 	position: fixed; 
+ 	top: 45%;
+	left: 45%;
+	z-index: 10000005;
+}
+
+.spinner {
+    border-radius: 50%;
+    margin: 0 auto;
+    border-width: 25px;
+    border: 3px solid #fff;
+    width: 50px;
+    border-top: 3px solid #000;
+    height: 50px;
+	animation-name: spin;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+
+}
+.spinner-text {
+    text-align: center;
+    margin: 10px auto;
+    color: white;
+    font-weight: 300;
+}
+#overlay {
+	background: #000;
+	opacity: 0.45;
+	position: fixed;
+	width:100%;
+	height: 100%;
+	z-index: 10000000;		
+	top:0;	
+}
+@keyframes spin {
+	from { 
+		-ms-transform: rotate(0deg); /* IE 9 */
+	    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	    transform: rotate(0deg);
+	}
+	to { 
+		-ms-transform: rotate(360deg); /* IE 9 */
+	    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+	    transform: rotate(360deg);
+	}
+}
