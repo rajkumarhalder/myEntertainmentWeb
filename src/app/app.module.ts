@@ -32,10 +32,32 @@ import { StatisticComponent } from './statistics/statistic/statistic.component';
 
 
 
+<<<<<<< HEAD
 import { LoaderComponent } from './loader/loader.component'; // to iomplement global loader
 import { AppConstant } from './AppConstant';//to define constant variable name
 
 
+=======
+const appRoutes :Routes =[
+{path : "",redirectTo : 'home/login',pathMatch : 'full'},
+{path : 'home', component : HomepageComponent,children : [
+{path : 'login', component : LoginComponent},
+{path : 'aboutus', component : AboutUs},
+{path : 'newregistration', component : NewRegistration}
+  
+]},
+{path : 'myhome', component : MyHomeComponent,canActivate : [AuthGuard],children : [
+  {path : 'registration', component : RegistrationComponent},
+  {path : 'myprofile' ,component : MyprofileComponent},
+  {path : 'payments' ,component : PaymentsComponent},
+  {path : 'admin' ,component : DashboardComponent},
+  {path : 'carousal', component : CarousalComponent},
+  {path : 'expanditure', component : ExpanditureComponent},
+  {path : 'statistic', component : StatisticComponent}
+
+  
+]}
+>>>>>>> 7450fee3f4609cd130edd54299470536a043b9aa
 
 const appRoutes :Routes =[
   {path : "",redirectTo : 'home/login',pathMatch : 'full'},
@@ -78,8 +100,12 @@ const appRoutes :Routes =[
     AboutUs,
     NewRegistration,
     ExpanditureComponent,
+<<<<<<< HEAD
     StatisticComponent,
     LoaderComponent
+=======
+    StatisticComponent
+>>>>>>> 7450fee3f4609cd130edd54299470536a043b9aa
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,HttpModule,HttpClientModule,

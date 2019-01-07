@@ -23,6 +23,10 @@ export class MyHomeservice{
         return  this._http.get("/home/getNotification");
     }
 
+    getNotifications() {
+        return  this._http.get("/getNotification");
+    }
+
 
 
 
