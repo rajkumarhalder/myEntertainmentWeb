@@ -30,15 +30,11 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { ExpanditureComponent } from './expanditure/expanditure/expanditure.component';
 import { StatisticComponent } from './statistics/statistic/statistic.component';
 
-
-
-<<<<<<< HEAD
 import { LoaderComponent } from './loader/loader.component'; // to iomplement global loader
 import { AppConstant } from './AppConstant';//to define constant variable name
+import { UtilityModule } from './utility/utility.module';
 
-
-=======
-const appRoutes :Routes =[
+/* const appRoutes :Routes =[
 {path : "",redirectTo : 'home/login',pathMatch : 'full'},
 {path : 'home', component : HomepageComponent,children : [
 {path : 'login', component : LoginComponent},
@@ -56,8 +52,7 @@ const appRoutes :Routes =[
   {path : 'statistic', component : StatisticComponent}
 
   
-]}
->>>>>>> 7450fee3f4609cd130edd54299470536a043b9aa
+]} */
 
 const appRoutes :Routes =[
   {path : "",redirectTo : 'home/login',pathMatch : 'full'},
@@ -100,17 +95,21 @@ const appRoutes :Routes =[
     AboutUs,
     NewRegistration,
     ExpanditureComponent,
-<<<<<<< HEAD
     StatisticComponent,
     LoaderComponent
-=======
-    StatisticComponent
->>>>>>> 7450fee3f4609cd130edd54299470536a043b9aa
   ],
   imports: [
-    BrowserModule,ReactiveFormsModule,HttpModule,HttpClientModule,
-    RouterModule.forRoot(appRoutes),FormsModule,BsDatepickerModule.forRoot(),ToastrModule.forRoot(),
-    BrowserAnimationsModule,Ng2CarouselamosModule
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    BsDatepickerModule.forRoot(),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    Ng2CarouselamosModule,
+    UtilityModule
   ],
   providers: [
     {   provide: HTTP_INTERCEPTORS,

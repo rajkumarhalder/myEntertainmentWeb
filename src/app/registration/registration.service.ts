@@ -13,6 +13,9 @@ export class RegistrationService {
         console.log("RegistrationService Called.....");
     }
 
+
+    
+
     public validateAndSave(model: any) {
         console.log("service called...." + model);
         return this._http.post("/registration", model)

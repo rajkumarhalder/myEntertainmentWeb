@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms'
 import { RegistrationService } from './registration.service';
+import { OnlyNumberDirective } from '../utility/_directive/only-number.directive';
+import { Member } from '../models/Member';
 
 import * as $ from 'jquery';
 
@@ -19,6 +21,8 @@ declare var $ :any; */
 export class RegistrationComponent implements OnInit{
 
   public paymentSuccessFlag : boolean =false;
+   member : Member;
+
   ngOnInit() {
     
   }
@@ -26,6 +30,7 @@ export class RegistrationComponent implements OnInit{
   
 
   constructor(private _registrationService: RegistrationService) {
+    this.member=new Member();
     console.log("RegistrationComponent called....")
   }
 
@@ -53,6 +58,18 @@ export class RegistrationComponent implements OnInit{
         
       }
     );
+  }
+
+  
+
+  /**
+   * responsible for user registration
+   * 
+   * @author Sandip
+	*/
+  memberRegistration(formValidationStatus){
+    console.log("memberRegistration > ",formValidationStatus);
+
   }
 
 
