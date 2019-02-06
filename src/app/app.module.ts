@@ -54,7 +54,40 @@ import { UtilityModule } from './utility/utility.module';
   
 ]} */
 
-const appRoutes :Routes =[
+const appRoutes: Routes=[
+  {
+    path:"login",
+    component: LoginComponent
+  },
+  {
+    path:"member-registration",
+    component: RegistrationComponent
+  },
+  {
+    path : "admin",
+    loadChildren:"./admin/admin.module#AdminModule"
+  },
+  {
+    path : "member",
+    loadChildren: "./user/user.module#UserModule"
+  },
+  {
+    path:"",
+    redirectTo:"login",
+    pathMatch: "full"
+  },
+  {
+    path:"**",
+    redirectTo:"login",
+    pathMatch: "full"
+  }
+];
+
+
+
+
+
+/* const appRoutes :Routes =[
   {path : "",redirectTo : 'home/login',pathMatch : 'full'},
   {
     path : 'home', 
@@ -79,7 +112,7 @@ const appRoutes :Routes =[
       {path : 'statistic', component : StatisticComponent}
     ]
   }
-];
+]; */
 
 @NgModule({
   declarations: [

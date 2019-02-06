@@ -36,12 +36,20 @@ export class LoginComponent {
 	*/
   onLogin() {
     this.loaderService.loaderStatus=true;//display loader
-    this._loginService.executeLogin(this.loginForm.value).subscribe(
+    this._loginService.executeLogin(this.loginForm.value)
+    .subscribe(
       (data :any) => {
         if(data.status){//login success
           localStorage.setItem(AppConstant.JWT_TOKEN,data.data.accessToken);//set jwt to local storage
           localStorage.setItem(AppConstant.CURRENT_USER_ROLE,data.data.roleId);//set user role id to local storage
-          this._router.navigate(['myhome/myprofile']);//navigate user to home page
+
+          if(data.data.roleId == 1){
+            this._router.navigate(['member']);//navigate to user dashboard
+          }
+          else{
+            this._router.navigate(['admin']);//navigate to admin dashboard
+          }
+          
         }
         else{//login failed
           this.isLoginFail=true;

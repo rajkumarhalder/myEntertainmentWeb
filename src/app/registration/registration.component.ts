@@ -6,6 +6,7 @@ import { OnlyNumberDirective } from '../utility/_directive/only-number.directive
 import { Member } from '../models/Member';
 
 import * as $ from 'jquery';
+import { LoaderService } from '../loader/loader.service';
 
 /* declare var jquery:any;
 declare var $ :any; */
@@ -29,7 +30,7 @@ export class RegistrationComponent implements OnInit{
 
   
 
-  constructor(private _registrationService: RegistrationService) {
+  constructor(private _registrationService: RegistrationService, private loaderService: LoaderService) {
     this.member=new Member();
     console.log("RegistrationComponent called....")
   }
@@ -49,7 +50,8 @@ export class RegistrationComponent implements OnInit{
 
   onRegistration() {
     console.log(this.registrationForm.value);
-    return this._registrationService.validateAndSave(this.registrationForm.value).subscribe(
+    return this._registrationService.validateAndSave(this.registrationForm.value)
+    .subscribe(
       data=>{
         console.log("Registration success..")
         this.paymentSuccessFlag=true;
@@ -68,7 +70,22 @@ export class RegistrationComponent implements OnInit{
    * @author Sandip
 	*/
   memberRegistration(formValidationStatus){
-    console.log("memberRegistration > ",formValidationStatus);
+    if(!formValidationStatus){
+      return false;
+    }
+
+    this.loaderService.loaderStatus=true;
+    this._registrationService.validateAndSave(this.member)
+    .subscribe(
+      res=>{
+        this.loaderService.loaderStatus=false;
+        console.log(res);
+      },
+      err=>{
+        this.loaderService.loaderStatus=false;
+        console.log(err);
+      }
+    );
 
   }
 

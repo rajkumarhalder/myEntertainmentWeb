@@ -3,13 +3,16 @@ import { Http, Response } from "@angular/http";
 
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../api.service";
+import { map, catchError } from "rxjs/operators";
+import { AppConstant } from "../AppConstant";
 
 
 
 @Injectable()
 export class RegistrationService {
 
-    constructor(private _http: HttpClient, private _router: Router) {
+    constructor(private api: ApiService) {
         console.log("RegistrationService Called.....");
     }
 
@@ -17,14 +20,20 @@ export class RegistrationService {
     
 
     public validateAndSave(model: any) {
-        console.log("service called...." + model);
-        return this._http.post("/registration", model)
-
+        return this.api.postRequest(AppConstant.URL_REGISTRATION, model)
+        .pipe(
+            map(res=>{
+                return res;
+            }),
+            catchError((err: any)=>{
+                return err;
+            })
+        );
     }
 
 
     public updateProfileByMember(model: any) {
-        console.log("service called...." + model);
+        /* console.log("service called...." + model);
         return this._http.post("/updateprofilebymeber", model).subscribe(
             data => {
                 console.log("success");
@@ -32,7 +41,7 @@ export class RegistrationService {
             error => {
                 console.log("error");
             }
-        );
+        ); */
     }
 
 

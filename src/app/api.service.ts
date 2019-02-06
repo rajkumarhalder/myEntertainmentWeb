@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private http : HttpClient) { }
 
   
-  getRequest(url : string, apiType: any): Observable<any> {
+  getRequest(url : string): Observable<any> {
     return this.http.get(url)
     .pipe(
       map((res)=>{ 
@@ -26,7 +26,7 @@ export class ApiService {
   }
 
 
-  postRequest(url, reqObj: any, apiType: any): Observable<any>{
+  postRequest(url, reqObj: any): Observable<any>{
     return this.http.post(url,reqObj)
     .pipe(
       map((res: Response)=>{
